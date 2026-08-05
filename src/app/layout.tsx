@@ -3,6 +3,7 @@ import { Inter, Sora } from "next/font/google";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { MotionObserver } from "@/components/motion-observer";
 import { siteConfig } from "@/content/site";
 import "./globals.css";
 
@@ -45,12 +46,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-scroll-behavior="smooth">
       <body className={`${inter.variable} ${sora.variable}`}>
         <a className="skip-link" href="#main-content">Skip to content</a>
         <SiteHeader />
         <div id="main-content">{children}</div>
         <SiteFooter />
+        <MotionObserver />
       </body>
     </html>
   );

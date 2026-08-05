@@ -19,8 +19,8 @@ export default function Icon(): ImageResponse {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: "16px",
-          background: "#121A33",
-          color: "#17B0A0",
+          background: "#161719",
+          color: "#0A7075",
           fontSize: "34px",
           fontWeight: 700,
         }}

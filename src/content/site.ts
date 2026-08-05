@@ -325,8 +325,8 @@ export const contentPages: readonly ContentPage[] = [
   {
     path: "about/founder-team",
     eyebrow: "Founder & team",
-    title: "A specialist team model shaped around each campaign.",
-    description: "Example content for the future Growth Orbits team page.",
+    title: "The specialist team behind better B2B conversations.",
+    description: "Meet the sample founder and specialist team model behind Growth Orbits. Names, biographies, roles, and portraits are ready to replace before launch.",
     sections: [
       {
         eyebrow: "Team model",

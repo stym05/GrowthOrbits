@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Brand } from "@/components/brand";
 import { ButtonLink } from "@/components/button-link";
 import { Icon } from "@/components/icons";
@@ -9,13 +9,33 @@ import { navigation } from "@/content/site";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || !open) return;
+      setOpen(false);
+      requestAnimationFrame(() => menuButtonRef.current?.focus());
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
     };
   }, [open]);
+
+  useEffect(() => {
+    const closeAtDesktopBreakpoint = () => {
+      if (window.innerWidth > 1080) setOpen(false);
+    };
+
+    window.addEventListener("resize", closeAtDesktopBreakpoint);
+    return () => window.removeEventListener("resize", closeAtDesktopBreakpoint);
+  }, []);
 
   return (
     <header className="site-header">
@@ -44,6 +64,7 @@ export function SiteHeader() {
             Book a call
           </ButtonLink>
           <button
+            ref={menuButtonRef}
             className="menu-button"
             type="button"
             aria-label={open ? "Close navigation" : "Open navigation"}
@@ -56,7 +77,11 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <div id="mobile-navigation" className={`mobile-panel ${open ? "is-open" : ""}`}>
+      <div
+        id="mobile-navigation"
+        className={`mobile-panel ${open ? "is-open" : ""}`}
+        aria-hidden={!open}
+      >
         <nav className="container mobile-nav" aria-label="Mobile navigation">
           {navigation.map((item) => (
             <div className="mobile-group" key={item.href}>
