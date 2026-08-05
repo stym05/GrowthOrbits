@@ -140,18 +140,21 @@ export const sampleEngagements = [
 export const resources = [
   {
     type: "Guide",
+    readTime: "7 min read",
     title: "How to build an ICP for B2B outbound",
     excerpt: "A practical framework for narrowing the market before investing in outreach.",
     href: "/resources/playbooks-guides",
   },
   {
     type: "Insight",
+    readTime: "5 min read",
     title: "Appointment setting vs. lead generation",
     excerpt: "Where each discipline starts, where it ends, and how to choose the right engagement.",
     href: "/resources/insights",
   },
   {
     type: "Playbook",
+    readTime: "8 min read",
     title: "A better multichannel sequence",
     excerpt: "Build coherent email, LinkedIn, and calling touchpoints without creating noise.",
     href: "/resources/playbooks-guides",
@@ -377,19 +380,9 @@ export const contentPages: readonly ContentPage[] = [
   {
     path: "about/careers",
     eyebrow: "Careers",
-    title: "Help B2B companies create better first conversations.",
-    description: "There are no confirmed openings yet. This page is ready for future roles and application workflows.",
-    sections: [
-      {
-        eyebrow: "Future roles",
-        title: "Likely hiring areas",
-        cards: [
-          { title: "Account research", copy: "Curious, detail-oriented researchers who can find and validate useful commercial context." },
-          { title: "Campaign delivery", copy: "Thoughtful communicators who can run disciplined outreach without sounding scripted." },
-          { title: "Growth strategy", copy: "B2B operators who can connect market choices, messaging, and sales outcomes." },
-        ],
-      },
-    ],
+    title: "Do thoughtful work with people who care about the details.",
+    description: "Explore the culture, future opportunities, and working principles behind the team Growth Orbits is building.",
+    sections: [],
   },
   {
     path: "resources/insights",
@@ -420,11 +413,9 @@ export const contentPages: readonly ContentPage[] = [
   {
     path: "resources/faq",
     eyebrow: "Frequently asked questions",
-    title: "Clear answers before the first campaign conversation.",
-    description: "Common questions about targeting, delivery, qualification, channels, and integration.",
-    sections: [
-      { eyebrow: "FAQ", title: "What B2B teams usually ask", cards: faqs.map((item) => ({ title: item.question, copy: item.answer })) },
-    ],
+    title: "Clear answers for a more useful first conversation.",
+    description: "Explore how Growth Orbits approaches targeting, campaign delivery, qualification, reporting, systems, and working together.",
+    sections: [],
   },
   {
     path: "contact",

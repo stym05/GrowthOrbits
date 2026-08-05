@@ -9,15 +9,24 @@ import { navigation } from "@/content/site";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [desktopMenu, setDesktopMenu] = useState<string | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
 
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key !== "Escape" || !open) return;
-      setOpen(false);
-      requestAnimationFrame(() => menuButtonRef.current?.focus());
+      if (event.key !== "Escape") return;
+
+      if (desktopMenu) {
+        setDesktopMenu(null);
+        if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+      }
+
+      if (open) {
+        setOpen(false);
+        requestAnimationFrame(() => menuButtonRef.current?.focus());
+      }
     };
 
     window.addEventListener("keydown", closeOnEscape);
@@ -26,7 +35,7 @@ export function SiteHeader() {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", closeOnEscape);
     };
-  }, [open]);
+  }, [desktopMenu, open]);
 
   useEffect(() => {
     const closeAtDesktopBreakpoint = () => {
@@ -44,12 +53,21 @@ export function SiteHeader() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navigation.map((item) => (
-            <div className="nav-group" key={item.href}>
-              <Link href={item.href}>{item.label}</Link>
+            <div
+              className={`nav-group ${desktopMenu === item.href ? "is-open" : ""}`}
+              key={item.href}
+              onPointerEnter={() => setDesktopMenu(item.href)}
+              onPointerLeave={() => setDesktopMenu(null)}
+              onFocus={() => setDesktopMenu(item.href)}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) setDesktopMenu(null);
+              }}
+            >
+              <Link href={item.href} onClick={() => setDesktopMenu(null)}>{item.label}</Link>
               {"children" in item ? (
                 <div className="nav-menu">
                   {item.children.map((child) => (
-                    <Link key={child.href} href={child.href}>
+                    <Link key={child.href} href={child.href} onClick={() => setDesktopMenu(null)}>
                       {child.label}
                     </Link>
                   ))}
