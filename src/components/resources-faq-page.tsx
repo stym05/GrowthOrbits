@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { ButtonLink } from "@/components/button-link";
 import { Icon } from "@/components/icons";
 import { resourceFaqContent } from "@/content/resources-faq";
 
 export function ResourcesFaqPage() {
   const { hero, categories, contact } = resourceFaqContent;
+  const [openFaq, setOpenFaq] = useState<string | null>(categories[0].questions[0].id);
 
   return (
     <main className="resource-faq-page">
@@ -29,7 +33,7 @@ export function ResourcesFaqPage() {
             <div className="resource-faq-panel-head"><span>Quick routes</span><small>Popular questions</small></div>
             <div className="resource-faq-popular">
               {hero.popular.map((item, index) => (
-                <Link href={item.href} key={item.question}>
+                <Link href={item.href} key={item.question} onClick={() => setOpenFaq(item.href.slice(1))}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <div><small>{item.label}</small><strong>{item.question}</strong></div>
                   <Icon name="arrow" width={17} height={17} />
@@ -58,9 +62,12 @@ export function ResourcesFaqPage() {
                 <div>{category.description}</div>
               </header>
               <div className="resource-faq-list">
-                {category.questions.map((item, index) => (
-                  <details id={item.id} key={item.question} open={index === 0}>
-                    <summary><span>{item.question}</span><i aria-hidden="true">+</i></summary>
+                {category.questions.map((item) => (
+                  <details id={item.id} key={item.question} open={openFaq === item.id}>
+                    <summary onClick={(event) => {
+                      event.preventDefault();
+                      setOpenFaq((current) => current === item.id ? null : item.id);
+                    }}><span>{item.question}</span><i aria-hidden="true">+</i></summary>
                     <div><p>{item.answer}</p></div>
                   </details>
                 ))}

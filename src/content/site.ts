@@ -7,6 +7,11 @@ export const siteConfig = {
   phone: "+44 20 0000 0000",
   location: "London, United Kingdom",
   linkedin: "#",
+  socialLinks: [
+    { label: "LinkedIn", href: "#", icon: "linkedin" },
+    { label: "X", href: "#", icon: "x" },
+    { label: "Instagram", href: "#", icon: "instagram" },
+  ],
 } as const;
 
 export const navigation = [
@@ -14,7 +19,7 @@ export const navigation = [
     label: "Services",
     href: "/services",
     children: [
-      { label: "Services overview", href: "/services" },
+      /*{ label: "Services overview", href: "/services" },*/
       { label: "Appointment setting", href: "/services/appointment-setting" },
       { label: "B2B lead generation", href: "/services/b2b-lead-generation" },
       { label: "Account-based marketing", href: "/services/account-based-marketing" },
@@ -27,8 +32,7 @@ export const navigation = [
     children: [
       { label: "Our story", href: "/about/our-story" },
       { label: "Founder & team", href: "/about/founder-team" },
-      { label: "How we work", href: "/about/how-we-work" },
-      { label: "Why Growth Orbits", href: "/about/why-us" },
+      { label: "Our approach", href: "/about/how-we-work" },
       { label: "Careers", href: "/about/careers" },
     ],
   },
@@ -36,9 +40,9 @@ export const navigation = [
     label: "Resources",
     href: "/resources/insights",
     children: [
-      { label: "Insights", href: "/resources/insights" },
-      { label: "Playbooks & guides", href: "/resources/playbooks-guides" },
       { label: "FAQ", href: "/resources/faq" },
+      { label: "Blogs", href: "/resources/blogs" },
+      { label: "Insights", href: "/resources/insights" },
     ],
   },
 ] as const;
@@ -143,7 +147,7 @@ export const resources = [
     readTime: "7 min read",
     title: "How to build an ICP for B2B outbound",
     excerpt: "A practical framework for narrowing the market before investing in outreach.",
-    href: "/resources/playbooks-guides",
+    href: "/resources/blogs",
   },
   {
     type: "Insight",
@@ -157,7 +161,7 @@ export const resources = [
     readTime: "8 min read",
     title: "A better multichannel sequence",
     excerpt: "Build coherent email, LinkedIn, and calling touchpoints without creating noise.",
-    href: "/resources/playbooks-guides",
+    href: "/resources/blogs",
   },
 ] as const;
 
@@ -219,17 +223,9 @@ export const contentPages: readonly ContentPage[] = [
   {
     path: "services",
     eyebrow: "Growth services",
-    title: "A focused outbound system, not disconnected activity.",
-    description: "Choose a targeted service or combine them into one integrated pipeline programme.",
-    sections: [
-      {
-        eyebrow: "Services",
-        title: "Three connected capabilities",
-        copy: "Each service can stand alone, but the strongest programmes connect accurate targeting, relevant outreach, qualification, and sales handoff.",
-        cards: services.map((service) => ({ title: service.title, copy: service.description, meta: service.number })),
-      },
-      { eyebrow: "Delivery model", title: "Built for complex B2B sales", cards: sharedDeliveryCards, theme: "soft" },
-    ],
+    title: "One focused system for creating better B2B conversations.",
+    description: "Compare appointment setting, B2B lead generation, and account-based marketing to find the right starting point for your pipeline.",
+    sections: [],
   },
   {
     path: "services/appointment-setting",
@@ -345,37 +341,10 @@ export const contentPages: readonly ContentPage[] = [
   },
   {
     path: "about/how-we-work",
-    eyebrow: "How we work",
-    title: "A clear operating rhythm from discovery to pipeline learning.",
-    description: "One accountable process, shared definitions, and regular evidence-based decisions.",
-    sections: [
-      {
-        eyebrow: "Operating cadence",
-        title: "What the engagement looks like",
-        cards: processSteps.map((step) => ({ title: step.title, copy: step.copy, meta: step.number })),
-      },
-      {
-        eyebrow: "Collaboration",
-        title: "Your team stays close to the learning.",
-        copy: "Campaign reviews focus on account quality, message response, objections, qualification, and the actions required from both teams.",
-        theme: "navy",
-      },
-    ],
-  },
-  {
-    path: "about/why-us",
-    eyebrow: "Why Growth Orbits",
-    title: "Measured by conversation quality, not activity theatre.",
-    description: "A transparent delivery model designed to protect your brand while creating real sales opportunities.",
-    sections: [
-      { eyebrow: "Differentiators", title: "How the model is designed", cards: sharedDeliveryCards },
-      {
-        eyebrow: "Delivery commitment",
-        title: "Clear standards before scale.",
-        copy: "Every pilot begins with agreed targeting, qualification criteria, messaging, reporting, and launch milestones. If the foundation is weak, the campaign is rebuilt before expansion.",
-        theme: "soft",
-      },
-    ],
+    eyebrow: "How we work · Why Growth Orbits",
+    title: "A clearer way to turn market focus into qualified pipeline.",
+    description: "Explore the principles, operating phases, collaboration model, delivery standards, and evidence-led approach behind Growth Orbits.",
+    sections: [],
   },
   {
     path: "about/careers",
@@ -394,21 +363,11 @@ export const contentPages: readonly ContentPage[] = [
     ],
   },
   {
-    path: "resources/playbooks-guides",
-    eyebrow: "Playbooks & guides",
-    title: "Actionable resources for targeting, outreach, and qualification.",
-    description: "A future library of downloadable and ungated B2B growth resources.",
-    sections: [
-      {
-        eyebrow: "Planned guides",
-        title: "Initial editorial roadmap",
-        cards: [
-          { title: "ICP design workbook", copy: "Define firmographic, operational, and buying-context criteria for a focused campaign." },
-          { title: "Outbound message checklist", copy: "Pressure-test relevance, clarity, proof, and the ask before launch." },
-          { title: "Meeting qualification scorecard", copy: "Create shared rules for what should and should not reach the sales calendar." },
-        ],
-      },
-    ],
+    path: "resources/blogs",
+    eyebrow: "Growth Orbits blog",
+    title: "Useful thinking for teams building B2B pipeline.",
+    description: "Practical Growth Orbits articles about targeting, outbound, qualification, sales handoff, and campaign learning.",
+    sections: [],
   },
   {
     path: "resources/faq",
@@ -511,7 +470,7 @@ export const contentPages: readonly ContentPage[] = [
           { title: "Services", copy: "Appointment setting, B2B lead generation, and account-based marketing." },
           { title: "Who we serve", copy: "B2B SaaS, technology services, cybersecurity, and professional services." },
           { title: "About", copy: "Story, team model, working method, differentiators, and careers." },
-          { title: "Resources", copy: "Insights, playbooks, guides, and frequently asked questions." },
+          { title: "Resources", copy: "FAQs, blog articles, practical insights, and growth frameworks." },
         ],
       },
     ],

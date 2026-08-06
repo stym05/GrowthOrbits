@@ -4,6 +4,8 @@ import { SectionHeading } from "@/components/section-heading";
 import {
   collaborationModel,
   deliveryStandards,
+  fitProfile,
+  modelPrinciples,
   weeklyRhythm,
   workPhases,
 } from "@/content/how-we-work";
@@ -14,10 +16,10 @@ export function HowWeWorkPage() {
       <section className="page-hero work-hero">
         <div className="container work-hero-layout">
           <div className="work-hero-copy">
-            <p className="eyebrow">How we work</p>
-            <h1>Clear direction. Close collaboration. Better learning.</h1>
+            <p className="eyebrow">How we work · Why Growth Orbits</p>
+            <h1>A clearer way to turn market focus into qualified pipeline.</h1>
             <p>
-              One accountable operating rhythm connects discovery, research, outreach, qualification, and pipeline feedback.
+              Growth Orbits connects strategy, research, outreach, qualification, and sales feedback in one accountable system—so quality improves before activity scales.
             </p>
             <div className="hero-actions">
               <ButtonLink href="#engagement-phases">See the process</ButtonLink>
@@ -27,8 +29,8 @@ export function HowWeWorkPage() {
 
           <div className="work-loop" aria-label="Four connected stages in the Growth Orbits process">
             <div className="work-loop-core">
-              <span>Shared centre</span>
-              <strong>Market evidence</strong>
+              <span>The difference</span>
+              <strong>Quality + evidence</strong>
             </div>
             {workPhases.map((phase, index) => (
               <div className={`work-loop-step work-loop-step-${index + 1}`} key={phase.number}>
@@ -40,12 +42,30 @@ export function HowWeWorkPage() {
         </div>
       </section>
 
+      <section className="content-section work-difference-section">
+        <div className="container work-difference-layout">
+          <div className="work-difference-heading">
+            <p className="eyebrow">Why the model works</p>
+            <h2>Better conversations begin long before the first message.</h2>
+            <p>Most outbound problems are created upstream. These four principles keep market choices, execution quality, and sales outcomes connected.</p>
+          </div>
+          <div className="work-difference-list">
+            {modelPrinciples.map((principle) => (
+              <article key={principle.number}>
+                <span>{principle.number}</span>
+                <div><h3>{principle.title}</h3><p>{principle.copy}</p><strong>{principle.signal}</strong></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="content-section work-phases-section" id="engagement-phases">
         <div className="container">
           <SectionHeading
-            eyebrow="The engagement"
-            title="Four phases, connected by one learning loop."
-            copy="Each phase creates a clear output for the next. Nothing disappears into a black box."
+            eyebrow="The operating system"
+            title="Four phases. Clear outputs. One learning loop."
+            copy="Each phase answers a different campaign question and creates a usable output for the next. Nothing disappears into a black box."
           />
 
           <ol className="work-phases">
@@ -77,8 +97,8 @@ export function HowWeWorkPage() {
         <div className="container">
           <SectionHeading
             eyebrow="Working together"
-            title="Clear ownership keeps the work moving."
-            copy="The best programmes feel like one connected team with distinct responsibilities."
+            title="One programme, with clear ownership on both sides."
+            copy="The strongest engagements feel like one connected team without making responsibility ambiguous."
           />
 
           <div className="collaboration-board">
@@ -113,8 +133,8 @@ export function HowWeWorkPage() {
         <div className="container work-rhythm-layout">
           <div className="work-rhythm-heading">
             <p className="eyebrow">The weekly rhythm</p>
-            <h2>A steady cadence turns activity into insight.</h2>
-            <p>Short feedback loops keep decisions close to what the market is actually telling us.</p>
+            <h2>Campaign activity becomes useful when it changes a decision.</h2>
+            <p>A steady feedback cadence keeps targeting, messages, qualification, and follow-up close to what the market is actually telling us.</p>
           </div>
           <ol className="work-rhythm">
             {weeklyRhythm.map((moment, index) => (
@@ -133,8 +153,8 @@ export function HowWeWorkPage() {
         <div className="container">
           <SectionHeading
             eyebrow="Delivery standards"
-            title="Built to be rigorous without becoming rigid."
-            copy="The operating principles that protect quality as a campaign evolves."
+            title="The standards that protect quality as the campaign evolves."
+            copy="The practical commitments behind the Growth Orbits difference."
             invert
           />
           <div className="delivery-standards-grid">
@@ -149,12 +169,30 @@ export function HowWeWorkPage() {
         </div>
       </section>
 
+      <section className="content-section work-fit-section">
+        <div className="container">
+          <SectionHeading eyebrow="Mutual fit" title="The model works best when the conditions are right." copy="A useful first conversation should clarify fit as quickly as it clarifies opportunity." />
+          <div className="work-fit-board">
+            <article>
+              <span className="collaboration-label">Strong fit</span>
+              <h3>You are ready to learn and act.</h3>
+              <ul>{fitProfile.goodFit.map((item) => <li key={item}><Icon name="check" width={17} height={17} />{item}</li>)}</ul>
+            </article>
+            <article className="work-fit-caution">
+              <span className="collaboration-label">Probably not yet</span>
+              <h3>The foundations need attention first.</h3>
+              <ul>{fitProfile.poorFit.map((item) => <li key={item}><span aria-hidden="true">—</span>{item}</li>)}</ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className="cta-section">
         <div className="container cta-inner">
           <div>
-            <p className="eyebrow">Start with alignment</p>
-            <h2>Bring us the market you want to understand.</h2>
-            <p>We’ll turn it into a focused first campaign and a practical learning plan.</p>
+            <p className="eyebrow">Start with the constraint</p>
+            <h2>Bring us the market, the offer, and what is not working.</h2>
+            <p>We’ll make the right starting scope, the trade-offs, and the first learning goal clear.</p>
           </div>
           <ButtonLink href="/book-a-call" variant="light">Plan a pilot</ButtonLink>
         </div>

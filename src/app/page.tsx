@@ -112,7 +112,7 @@ export default function HomePage() {
             <p className="eyebrow">{campaignQualityLoop.eyebrow}</p>
             <h2>{campaignQualityLoop.title}</h2>
             <p>{campaignQualityLoop.description}</p>
-            <ButtonLink href="/about/why-us" variant="secondary">Why Growth Orbits</ButtonLink>
+            <ButtonLink href="/about/how-we-work" variant="secondary">How and why we work</ButtonLink>
           </div>
           <div className="proof-panel">
             <div className="proof-panel-heading">

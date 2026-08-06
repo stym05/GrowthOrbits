@@ -66,6 +66,21 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  async redirects() {
+    return [
+      {
+        source: "/about/why-us",
+        destination: "/about/how-we-work",
+        permanent: true,
+      },
+      {
+        source: "/resources/playbooks-guides",
+        destination: "/resources/blogs",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

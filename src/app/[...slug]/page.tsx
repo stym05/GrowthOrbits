@@ -6,6 +6,8 @@ import { FounderTeamPage } from "@/components/founder-team-page";
 import { HowWeWorkPage } from "@/components/how-we-work-page";
 import { OurStoryPage } from "@/components/our-story-page";
 import { ResourcesFaqPage } from "@/components/resources-faq-page";
+import { ResourcesBlogsPage } from "@/components/resources-blogs-page";
+import { ServicesOverviewPage } from "@/components/services-overview-page";
 import { contentPages, getContentPage } from "@/content/site";
 
 type RouteProps = {
@@ -40,6 +42,8 @@ export default async function DynamicContentPage({ params }: RouteProps) {
   if (page.path === "about/how-we-work") return <HowWeWorkPage />;
   if (page.path === "about/careers") return <CareersPage />;
   if (page.path === "resources/faq") return <ResourcesFaqPage />;
+  if (page.path === "resources/blogs") return <ResourcesBlogsPage />;
+  if (page.path === "services") return <ServicesOverviewPage />;
 
   return <ContentPageView page={page} />;
 }
