@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContentPageView } from "@/components/content-page";
+import { BookCallPage } from "@/components/book-call-page";
 import { CareersPage } from "@/components/careers-page";
 import { FounderTeamPage } from "@/components/founder-team-page";
 import { HowWeWorkPage } from "@/components/how-we-work-page";
@@ -8,6 +9,9 @@ import { OurStoryPage } from "@/components/our-story-page";
 import { ResourcesFaqPage } from "@/components/resources-faq-page";
 import { ResourcesBlogsPage } from "@/components/resources-blogs-page";
 import { ServicesOverviewPage } from "@/components/services-overview-page";
+import { ServiceDetailPage } from "@/components/service-detail-page";
+import { WhoWeServePage } from "@/components/who-we-serve-page";
+import { serviceDetails, type ServiceDetailKey } from "@/content/service-details";
 import { contentPages, getContentPage } from "@/content/site";
 
 type RouteProps = {
@@ -44,6 +48,12 @@ export default async function DynamicContentPage({ params }: RouteProps) {
   if (page.path === "resources/faq") return <ResourcesFaqPage />;
   if (page.path === "resources/blogs") return <ResourcesBlogsPage />;
   if (page.path === "services") return <ServicesOverviewPage />;
+  if (page.path.startsWith("services/")) {
+    const serviceKey = page.path.slice("services/".length) as ServiceDetailKey;
+    if (serviceKey in serviceDetails) return <ServiceDetailPage serviceKey={serviceKey} />;
+  }
+  if (page.path === "book-a-call") return <BookCallPage />;
+  if (page.path === "who-we-serve") return <WhoWeServePage />;
 
   return <ContentPageView page={page} />;
 }

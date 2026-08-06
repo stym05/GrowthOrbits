@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { servicesOverviewContent } from "@/content/services-overview";
 
 export function ServicesOverviewPage() {
-  const { hero, services, comparison, foundations, decision } = servicesOverviewContent;
+  const { hero, services, outcomes, comparison, foundations, decision } = servicesOverviewContent;
 
   return (
     <main className="services-overview-page">
@@ -35,6 +35,20 @@ export function ServicesOverviewPage() {
         </div>
       </section>
 
+      <nav className="services-route-nav" aria-label="Services on this page">
+        <div className="container">
+          <span>Choose a starting route</span>
+          <div>
+            {services.map((service) => (
+              <Link href={`#service-${service.number}`} key={service.number}>
+                <small>{service.number}</small>
+                {service.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       <section className="services-catalog-section section" id="service-options">
         <div className="container">
           <div className="services-catalog-heading">
@@ -43,7 +57,7 @@ export function ServicesOverviewPage() {
           </div>
           <div className="services-catalog">
             {services.map((service) => (
-              <article className="services-catalog-row" key={service.number}>
+              <article className="services-catalog-row" id={`service-${service.number}`} key={service.number}>
                 <div className="services-catalog-index"><span>{service.number}</span><small>{service.eyebrow}</small></div>
                 <div className="services-catalog-main"><h2>{service.title}</h2><p>{service.copy}</p><ButtonLink href={service.href} variant="secondary">Explore {service.title}</ButtonLink></div>
                 <div className="services-catalog-fit"><span>Best for</span><p>{service.bestFor}</p><strong>{service.outcome}</strong></div>
@@ -54,9 +68,30 @@ export function ServicesOverviewPage() {
         </div>
       </section>
 
+      <section className="services-outcomes-section section">
+        <div className="container services-outcomes-layout">
+          <div className="services-outcomes-intro">
+            <p className="eyebrow">{outcomes.eyebrow}</p>
+            <h2>{outcomes.title}</h2>
+            <p>{outcomes.description}</p>
+            <div className="services-outcome-orbit" aria-hidden="true"><span /><span /><i /></div>
+          </div>
+          <div className="services-outcomes-list">
+            {outcomes.items.map((item) => (
+              <article key={item.number}>
+                <span>{item.number}</span>
+                <div><small>{item.label}</small><h3>{item.title}</h3><p>{item.copy}</p></div>
+                <Icon name="arrow" width={19} height={19} />
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="services-comparison-section section">
         <div className="container">
-          <SectionHeading eyebrow={comparison.eyebrow} title={comparison.title} />
+          <SectionHeading eyebrow={comparison.eyebrow} title={comparison.title} copy={comparison.description} />
+          <p className="services-comparison-hint">Swipe sideways to compare every service <span>→</span></p>
           <div className="services-comparison-scroll">
             <div className="services-comparison-table" role="table" aria-label="Service comparison">
               <div className="services-comparison-head" role="row">

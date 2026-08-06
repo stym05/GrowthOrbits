@@ -290,17 +290,9 @@ export const contentPages: readonly ContentPage[] = [
   {
     path: "who-we-serve",
     eyebrow: "Who we serve",
-    title: "Built for B2B teams with valuable, considered sales conversations.",
-    description: "Growth Orbits is best suited to companies selling complex services or software to defined business audiences.",
-    sections: [
-      { eyebrow: "Core sectors", title: "Initial market focus", cards: audiences.map((item) => ({ title: item.title, copy: item.copy })) },
-      {
-        eyebrow: "Best fit",
-        title: "A strong engagement usually has these ingredients",
-        bullets: ["A clearly valuable B2B offer", "A defined or definable ideal customer profile", "Enough sales capacity to run good discovery calls", "A willingness to test and improve messaging", "A realistic pilot window and measurable goals"],
-        theme: "soft",
-      },
-    ],
+    title: "Built for B2B teams where every conversation needs to count.",
+    description: "Growth Orbits works with companies selling valuable software, technology, or expertise to clearly defined business audiences.",
+    sections: [],
   },
   {
     path: "about/our-story",
@@ -386,17 +378,10 @@ export const contentPages: readonly ContentPage[] = [
   },
   {
     path: "book-a-call",
-    eyebrow: "Book a call",
-    title: "Start with a focused strategy conversation.",
-    description: "Until a scheduling link is available, use the enquiry form and select the service you want to discuss.",
-    sections: [
-      {
-        eyebrow: "What to bring",
-        title: "A useful first call covers",
-        bullets: ["Your offer and average deal profile", "Target sectors, roles, and regions", "Current pipeline constraints", "Available proof and messaging assets", "What success should look like after a pilot"],
-        theme: "soft",
-      },
-    ],
+    eyebrow: "Strategy conversation",
+    title: "Bring the pipeline challenge. Leave with a clearer next move.",
+    description: "A focused conversation to understand your market, identify the real constraint, and decide on a sensible next step.",
+    sections: [],
     form: "contact",
   },
   {

@@ -71,7 +71,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
               <p className="eyebrow">Start the conversation</p>
               <h2>Share the context. We’ll make the next step clear.</h2>
               <p>
-                This starter sends server-validated submissions through a protected API route. Configure the delivery and distributed rate-limiting environment variables before production.
+                Tell us what you sell, who you want to reach, and where the pipeline is getting stuck. We’ll use that context to make the next conversation focused and useful.
               </p>
             </div>
             <ContactForm defaultService={page.form === "pilot" ? "Pilot programme" : "General enquiry"} />

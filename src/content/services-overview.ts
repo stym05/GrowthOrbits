@@ -46,9 +46,42 @@ export const servicesOverviewContent = {
       href: "/services/account-based-marketing",
     },
   ],
+  outcomes: {
+    eyebrow: "Value beyond activity",
+    title: "The work should leave your commercial system stronger.",
+    description:
+      "A useful programme creates immediate pipeline motion and reusable knowledge about the market, message, qualification, and sales handoff.",
+    items: [
+      {
+        number: "01",
+        label: "Market clarity",
+        title: "A sharper view of where to focus",
+        copy: "A more defensible ICP, priority-account logic, and clearer understanding of the buying group.",
+      },
+      {
+        number: "02",
+        label: "Message evidence",
+        title: "Language tested against real reactions",
+        copy: "Patterns from responses, objections, and silence that help strengthen the commercial narrative.",
+      },
+      {
+        number: "03",
+        label: "Sales context",
+        title: "Better-prepared first conversations",
+        copy: "Qualified interest passed with the account, person, problem, and outreach context your sales team needs.",
+      },
+      {
+        number: "04",
+        label: "Learning loop",
+        title: "A clearer decision about what to do next",
+        copy: "Transparent evidence to scale, refine, narrow, pause, or change the campaign direction.",
+      },
+    ],
+  },
   comparison: {
     eyebrow: "Choose with confidence",
     title: "Different constraints need different starting points.",
+    description: "Use the comparison as a starting guide. The right scope still depends on your market maturity, sales capacity, and immediate constraint.",
     rows: [
       { label: "Primary need", values: ["More qualified meetings", "A repeatable pipeline engine", "Progress in priority accounts"] },
       { label: "Typical scope", values: ["Focused ICP and personas", "Defined segments and regions", "Named strategic accounts"] },

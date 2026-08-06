@@ -6,10 +6,23 @@ import { Icon } from "@/components/icons";
 
 type FormStatus = "idle" | "submitting" | "error";
 
-export function ContactForm({ defaultService = "General enquiry" }: { defaultService?: string }) {
+type ContactFormProps = {
+  defaultService?: string;
+  kicker?: string;
+  heading?: string;
+  intro?: string;
+};
+
+export function ContactForm({
+  defaultService = "General enquiry",
+  kicker = "Project enquiry",
+  heading = "Start with the essentials.",
+  intro = "A little context helps us make the first conversation useful.",
+}: ContactFormProps) {
   const router = useRouter();
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState("");
+  const [messageLength, setMessageLength] = useState(0);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -43,6 +56,7 @@ export function ContactForm({ defaultService = "General enquiry" }: { defaultSer
       }
 
       form.reset();
+      setMessageLength(0);
       router.push("/thank-you");
     } catch (submissionError) {
       setError(submissionError instanceof Error ? submissionError.message : "Unexpected form error.");
@@ -54,59 +68,126 @@ export function ContactForm({ defaultService = "General enquiry" }: { defaultSer
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit} noValidate>
-      <div className="form-grid">
-        <label>
-          <span>Name</span>
-          <input name="name" autoComplete="name" required minLength={2} maxLength={80} />
-        </label>
-        <label>
-          <span>Work email</span>
-          <input name="email" type="email" autoComplete="email" required maxLength={160} />
-        </label>
-        <label>
-          <span>Company</span>
-          <input name="company" autoComplete="organization" required minLength={2} maxLength={120} />
-        </label>
-        <label>
-          <span>Phone <small>Optional</small></span>
-          <input name="phone" type="tel" autoComplete="tel" maxLength={40} />
-        </label>
+    <form
+      className="contact-form"
+      onSubmit={handleSubmit}
+      onChangeCapture={() => {
+        if (status === "error") {
+          setStatus("idle");
+          setError("");
+        }
+      }}
+      aria-busy={status === "submitting"}
+    >
+      <div className="contact-form-header">
+        <div>
+          <span className="contact-form-kicker">{kicker}</span>
+          <h3>{heading}</h3>
+          <p>{intro}</p>
+        </div>
+        <span className="contact-form-badge">
+          <Icon name="check" width={15} height={15} />
+          Protected form
+        </span>
       </div>
 
-      <label>
-        <span>What would you like to discuss?</span>
-        <select name="service" defaultValue={defaultService}>
-          <option>Appointment setting</option>
-          <option>B2B lead generation</option>
-          <option>Account-based marketing</option>
-          <option>Pilot programme</option>
-          <option>General enquiry</option>
-        </select>
-      </label>
+      <fieldset className="form-group">
+        <legend>
+          <span>01</span>
+          <span>
+            <strong>About you</strong>
+            <small>Who should we respond to?</small>
+          </span>
+        </legend>
+        <div className="form-grid">
+          <label>
+            <span>Name <small>Required</small></span>
+            <input name="name" autoComplete="name" placeholder="Your full name" required minLength={2} maxLength={80} />
+          </label>
+          <label>
+            <span>Work email <small>Required</small></span>
+            <input name="email" type="email" autoComplete="email" placeholder="you@company.com" required maxLength={160} />
+          </label>
+          <label>
+            <span>Company <small>Required</small></span>
+            <input name="company" autoComplete="organization" placeholder="Company name" required minLength={2} maxLength={120} />
+          </label>
+          <label>
+            <span>Phone <small>Optional</small></span>
+            <input name="phone" type="tel" autoComplete="tel" placeholder="Country code + number" maxLength={40} />
+          </label>
+        </div>
+      </fieldset>
 
-      <label>
-        <span>Tell us about the market or pipeline challenge</span>
-        <textarea name="message" rows={6} required minLength={20} maxLength={2000} />
-      </label>
+      <fieldset className="form-group">
+        <legend>
+          <span>02</span>
+          <span>
+            <strong>Your growth brief</strong>
+            <small>What would make this conversation valuable?</small>
+          </span>
+        </legend>
+
+        <label>
+          <span>What would you like to discuss? <small>Required</small></span>
+          <select name="service" defaultValue={defaultService} required>
+            <option>Appointment setting</option>
+            <option>B2B lead generation</option>
+            <option>Account-based marketing</option>
+            <option>Pilot programme</option>
+            <option>General enquiry</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Tell us about the market or pipeline challenge <small>Required</small></span>
+          <textarea
+            name="message"
+            rows={6}
+            placeholder="For example: what you sell, who you want to reach, and where your current process is getting stuck."
+            required
+            minLength={20}
+            maxLength={2000}
+            aria-describedby="message-guidance"
+            onChange={(event) => setMessageLength(event.currentTarget.value.length)}
+          />
+          <span className="form-field-meta" id="message-guidance">
+            <small>20 character minimum</small>
+            <small>{messageLength} / 2000</small>
+          </span>
+        </label>
+      </fieldset>
 
       <label className="honeypot" aria-hidden="true">
         Website
         <input name="website" tabIndex={-1} autoComplete="off" />
       </label>
 
-      <label className="consent-field">
-        <input name="consent" type="checkbox" required />
-        <span>I agree that Growth Orbits may use this information to respond to my enquiry.</span>
-      </label>
+      <div className="form-consent-panel">
+        <label className="consent-field">
+          <input name="consent" type="checkbox" required />
+          <span>I agree that Growth Orbits may use this information to respond to my enquiry.</span>
+        </label>
+      </div>
 
-      {error ? <p className="form-error" role="alert">{error}</p> : null}
+      {error ? (
+        <p className="form-error" role="alert">
+          <span aria-hidden="true">!</span>
+          {error}
+        </p>
+      ) : null}
 
-      <button className="button button-primary submit-button" type="submit" disabled={status === "submitting"}>
-        <span>{status === "submitting" ? "Sending…" : "Send enquiry"}</span>
-        <Icon name="arrow" width={18} height={18} />
-      </button>
-      <p className="form-note">Example contact details and delivery configuration must be replaced before launch.</p>
+      <div className="form-submit-row">
+        <button className="button button-primary submit-button" type="submit" disabled={status === "submitting"}>
+          {status === "submitting" ? <span className="form-spinner" aria-hidden="true" /> : null}
+          <span>{status === "submitting" ? "Sending enquiry…" : "Send enquiry"}</span>
+          {status !== "submitting" ? <Icon name="arrow" width={18} height={18} /> : null}
+        </button>
+        <p className="form-privacy-note">
+          <Icon name="check" width={15} height={15} />
+          Your details are used only to respond to this enquiry.
+        </p>
+      </div>
     </form>
   );
 }
