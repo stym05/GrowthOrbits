@@ -1,21 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ButtonLink } from "@/components/button-link";
-import { CinematicHeroVideo } from "@/components/cinematic-hero-video";
+import { FAQAccordion } from "@/components/faq-accordion";
+import { HeroOrbitAnimation } from "@/components/hero-orbit-animation";
 import { Icon } from "@/components/icons";
 import { SectionHeading } from "@/components/section-heading";
 import {
   campaignQualityLoop,
   homeHero,
-  sampleEngagementPresentation,
+  homeProcess,
+  homeResources,
+  homeServices,
+  homeTestimonials,
 } from "@/content/home";
 import {
   audiences,
   faqs,
   operatingPrinciples,
-  processSteps,
-  resources,
-  sampleEngagements,
-  services,
   siteConfig,
 } from "@/content/site";
 
@@ -33,11 +34,11 @@ export default function HomePage() {
 
   return (
     <main className="home-page">
-      <section className="video-hero">
-        <CinematicHeroVideo src={homeHero.video.src} />
-        <div className="video-hero-overlay" aria-hidden="true" />
-        <div className="container video-hero-inner">
-          <div className="hero-copy video-hero-copy">
+      <section className="orbit-hero">
+        <div className="orbit-hero-background" aria-hidden="true" />
+        <HeroOrbitAnimation />
+        <div className="container orbit-hero-inner">
+          <div className="hero-copy orbit-hero-copy">
             <p className="eyebrow">{homeHero.eyebrow}</p>
             <h1>{homeHero.title}</h1>
             <p className="hero-lede">{homeHero.description}</p>
@@ -45,15 +46,10 @@ export default function HomePage() {
               <ButtonLink href={homeHero.primaryAction.href}>{homeHero.primaryAction.label}</ButtonLink>
               <ButtonLink href={homeHero.secondaryAction.href} variant="secondary">{homeHero.secondaryAction.label}</ButtonLink>
             </div>
-            <div className="hero-signal-flow" aria-label="Growth Orbits operating model">
-              {homeHero.signalFlow.map((signal) => (
-                <div key={signal.number}><span>{signal.number}</span><strong>{signal.label}</strong></div>
-              ))}
-            </div>
-            <div className="hero-trust">
+            {/* <div className="hero-trust">
               <span>Designed for</span>
               {homeHero.designedFor.map((sector) => <strong key={sector}>{sector}</strong>)}
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -78,27 +74,23 @@ export default function HomePage() {
 
       <section className="section services-section">
         <div className="container">
-          <div className="home-heading-row">
-            <SectionHeading
-              eyebrow="What we do"
-              title="One connected system for B2B pipeline growth."
-              copy="Choose a focused service or combine the capabilities into one accountable programme built around your market and sales motion."
-            />
-            <div className="home-section-note">
-              <span>01 / Capabilities</span>
-              <p>Strategy, research, outreach, and learning stay connected from first hypothesis to sales handoff.</p>
-            </div>
+          <div className="services-showcase-heading">
+            <p className="eyebrow">What we do</p>
+            <h2>{homeServices.titleLead} <span>{homeServices.titleAccent}</span></h2>
+            <p>{homeServices.description}</p>
           </div>
-          <div className="services-grid">
-            {services.map((service, index) => (
-              <Link className={`service-card accent-${service.accent} ${index === 0 ? "service-card-featured" : ""}`} href={service.href} key={service.slug}>
-                <div className="service-topline">
-                  <span>{service.number}</span>
-                  <Icon name="arrow" width={22} height={22} />
+          <div className="services-showcase-grid">
+            {homeServices.items.map((service, index) => (
+              <Link className={`services-showcase-card ${index === 1 ? "is-raised" : ""}`} href={service.href} key={service.number}>
+                <div className="services-showcase-image">
+                  <Image src={service.image} alt={service.imageAlt} fill sizes="(max-width: 720px) 100vw, 34vw" />
                 </div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <span className="service-card-action">Explore service <Icon name="arrow" width={16} height={16} /></span>
+                <div className="services-showcase-content">
+                  <span className="services-showcase-number">{service.number} / Solution</span>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <span className="services-showcase-link">Learn More <Icon name="arrow" width={16} height={16} /></span>
+                </div>
               </Link>
             ))}
           </div>
@@ -133,35 +125,26 @@ export default function HomePage() {
 
       <section className="section process-section">
         <div className="container">
-          <div className="home-heading-row process-heading-row">
-            <SectionHeading
-              eyebrow="How it works"
-              title="A clear route from market definition to campaign learning."
-              copy="A compact operating model keeps targeting, data, messaging, outreach, and sales handoff connected."
-            />
-            <div className="home-section-note">
-              <span>03 / The system</span>
-              <p>Four deliberate stages. One shared learning loop. No disconnected campaign activity.</p>
-            </div>
+          <div className="process-showcase-heading">
+            <p className="eyebrow">How it works</p>
+            <h2>{homeProcess.title}</h2>
+            <p>{homeProcess.description}</p>
           </div>
-          <div className="process-grid">
-            {processSteps.map((step) => (
-              <article className="process-card" data-step={step.number} key={step.number}>
-                <div className="process-step-head">
-                  <span>{step.number}</span>
-                  <small>Campaign phase</small>
-                </div>
-                <div className="process-node" aria-hidden="true" />
-                <div className="process-card-copy">
+          <div className="process-showcase-grid">
+            {homeProcess.steps.map((step) => (
+              <article className="process-showcase-card" key={step.number} tabIndex={0}>
+                <div>
                   <h3>{step.title}</h3>
-                  <p>{step.copy}</p>
+                  <p>{step.description}</p>
                 </div>
               </article>
             ))}
           </div>
-          <div className="process-action">
-            <p><span>One connected workflow</span>Each phase informs the next—and every campaign creates evidence for the next cycle.</p>
-            <ButtonLink href="/about/how-we-work">See how we work</ButtonLink>
+          <div className="process-showcase-action">
+            <p>Built as one connected workflow, not four disconnected activities.</p>
+            <Link className="process-showcase-cta" href="/about/our-story">
+              Why Growth Orbits? <Icon name="arrow" width={16} height={16} />
+            </Link>
           </div>
         </div>
       </section>
@@ -169,13 +152,10 @@ export default function HomePage() {
       <section className="section audience-section">
         <div className="container audience-layout">
           <div className="audience-intro">
-            <span className="home-section-index">04</span>
             <SectionHeading
-              eyebrow="Who we serve"
-              title="For teams selling valuable, considered B2B solutions."
-              copy="The initial focus is on sectors where account selection, buying-group context, and conversation quality matter more than raw lead volume."
+              title="Industries We Help Grow"
+              copy="We help B2B companies across technology and service industries build stronger pipelines, connect with the right decision-makers, and create new growth opportunities."
             />
-            <div className="audience-signal"><span>Best fit</span><strong>Complex sale · Clear value · Defined market</strong></div>
           </div>
           <div className="audience-list">
             {audiences.map((audience, index) => (
@@ -190,55 +170,47 @@ export default function HomePage() {
 
       <section className="section engagements-section">
         <div className="container">
-          <SectionHeading
-            eyebrow={sampleEngagementPresentation.eyebrow}
-            title={sampleEngagementPresentation.title}
-            copy={sampleEngagementPresentation.description}
-          />
-          <div className="engagement-grid">
-            {sampleEngagements.map((item, index) => (
-              <article className="engagement-card" key={item.title}>
-                <div className="engagement-card-index" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
+          <div className="testimonials-heading">
+            <p className="eyebrow">Client stories</p>
+            <h2>{homeTestimonials.title}</h2>
+            <p>{homeTestimonials.description}</p>
+          </div>
+          <div className="testimonials-grid">
+            {homeTestimonials.items.map((item) => (
+              <figure className="testimonial-card" key={item.name}>
+                <blockquote>
+                  <p>“{item.quote}”</p>
+                </blockquote>
+                <div className="testimonial-portrait">
+                  <Image src={item.image} alt={`AI-generated portrait representing ${item.name}`} fill sizes="120px" />
                 </div>
-                <div className="engagement-card-content">
-                  <div className="engagement-card-meta"><small>{item.label}</small><span>Sample</span></div>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
-                  <strong><span>Future proof point</span>{item.outcome}</strong>
-                </div>
-              </article>
+                <figcaption><strong>{item.name}</strong><span>{item.role}</span></figcaption>
+              </figure>
             ))}
           </div>
         </div>
       </section>
 
       <section className="section resources-section">
-        <div className="container">
-          <div className="resources-heading-row">
-            <div className="resources-heading-main">
-              <span className="home-section-index">06 / Field notes</span>
-              <SectionHeading eyebrow="Resources" title="Practical thinking for better outbound decisions." copy="Frameworks and field notes for teams that want more precision before adding more activity." />
-            </div>
-            <div className="resources-heading-action">
-              <p>Built to be used—not saved for later and forgotten.</p>
-              <ButtonLink href="/resources/insights" variant="secondary">Explore the library</ButtonLink>
-            </div>
+        <div className="container resources-showcase">
+          <div className="resources-showcase-intro">
+            <p className="eyebrow">Resources</p>
+            <h2>{homeResources.title}</h2>
+            <p>{homeResources.description}</p>
+            <span>Featured Blogs</span>
           </div>
-          <div className="resource-grid">
-            {resources.map((resource, index) => (
-              <Link className={`resource-card ${index === 0 ? "resource-card-featured" : ""}`} href={resource.href} key={resource.title}>
-                {index === 0 ? <div className="resource-card-orbit" aria-hidden="true"><span /><span /><i /></div> : null}
-                <div className="resource-card-meta"><small>{resource.type}</small><span>{String(index + 1).padStart(2, "0")}</span></div>
-                <div className="resource-card-body">
-                  {index === 0 ? <span className="resource-feature-label">Start here</span> : null}
+          <div className="resources-showcase-list">
+            {homeResources.items.map((resource, index) => (
+              <Link className="resource-showcase-card" href={resource.href} key={resource.title}>
+                <div className={`resource-showcase-art art-${index + 1}`} aria-hidden="true">
+                  <span /><span /><i />
+                </div>
+                <div className="resource-showcase-copy">
                   <h3>{resource.title}</h3>
-                  <p>{resource.excerpt}</p>
+                  <p>{resource.description}</p>
+                  <strong>Read More <Icon name="arrow" width={15} height={15} /></strong>
                 </div>
-                <div className="resource-card-footer">
-                  <span>{resource.readTime}</span>
-                  <strong>Read {resource.type.toLowerCase()} <Icon name="arrow" width={16} height={16} /></strong>
-                </div>
+                <Icon className="resource-showcase-arrow" name="arrow" width={22} height={22} />
               </Link>
             ))}
           </div>
@@ -248,18 +220,10 @@ export default function HomePage() {
       <section className="section faq-section">
         <div className="container faq-layout">
           <div className="faq-intro">
-            <span className="home-section-index">07</span>
-            <SectionHeading eyebrow="FAQ" title="Useful answers before the first call." copy="The final commercial, compliance, and delivery details will be updated as the company operating model is confirmed." />
-            <Link className="faq-contact-link" href="/contact">Still have a question? <strong>Talk to us</strong><Icon name="arrow" width={16} height={16} /></Link>
+            <SectionHeading title="Frequently Asked Questions" copy="Find answers to common questions about our appointment setting, lead generation, and B2B growth services." />
+            <Link className="faq-contact-link" href="/contact"><strong>Still have questions? Let’s talk</strong><Icon name="arrow" width={16} height={16} /></Link>
           </div>
-          <div className="faq-list">
-            {faqs.map((faq) => (
-              <details key={faq.question}>
-                <summary>{faq.question}<span>+</span></summary>
-                <p>{faq.answer}</p>
-              </details>
-            ))}
-          </div>
+          <FAQAccordion items={faqs} />
         </div>
       </section>
 
@@ -267,9 +231,9 @@ export default function HomePage() {
         <div className="container cta-inner">
           <div className="cta-orbit" aria-hidden="true"><span /><span /></div>
           <div>
-            <p className="eyebrow">Build the next orbit</p>
-            <h2>Turn a clear market into better sales conversations.</h2>
-            <p>Start with one focused growth hypothesis and a practical pilot plan.</p>
+            <p className="eyebrow">Ready to grow?</p>
+            <h2>Ready to fill your calendar with qualified meetings?</h2>
+            <p>Book a 30-minute strategy call. We’ll map your ICP and show you exactly how we can book meetings for your team.</p>
           </div>
           <ButtonLink href="/book-a-call" variant="light">Book a strategy call</ButtonLink>
         </div>

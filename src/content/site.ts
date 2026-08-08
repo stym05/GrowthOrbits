@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Growth Orbits",
+  name: "Growth Orbit",
   tagline: "Outbound growth, built around the right conversations.",
   description:
     "Growth Orbits helps B2B teams build predictable pipeline through research-led appointment setting, lead generation, and account-based marketing.",
@@ -16,33 +16,74 @@ export const siteConfig = {
 
 export const navigation = [
   {
-    label: "Services",
+    label: "Solutions",
     href: "/services",
     children: [
-      /*{ label: "Services overview", href: "/services" },*/
-      { label: "Appointment setting", href: "/services/appointment-setting" },
-      { label: "B2B lead generation", href: "/services/b2b-lead-generation" },
-      { label: "Account-based marketing", href: "/services/account-based-marketing" },
+      /*{ label: "Solutions overview", href: "/services" },*/
+      { label: "Appointment Setting", href: "/services/appointment-setting" },
+      { label: "B2B Lead Generation", href: "/services/b2b-lead-generation" },
+      { label: "Account-Based Marketing(ABM)", href: "/services/account-based-marketing" },
     ],
   },
-  { label: "Who we serve", href: "/who-we-serve" },
+  { label: "Industries", href: "/who-we-serve" },
   {
-    label: "About",
+    label: "Company",
     href: "/about/our-story",
     children: [
       { label: "Our story", href: "/about/our-story" },
-      { label: "Founder & team", href: "/about/founder-team" },
+      { label: "Leadership team", href: "/about/founder-team" },
       { label: "Our approach", href: "/about/how-we-work" },
       { label: "Careers", href: "/about/careers" },
     ],
   },
   {
-    label: "Resources",
+    label: "Insights",
     href: "/resources/insights",
     children: [
-      { label: "FAQ", href: "/resources/faq" },
+      { label: "FAQs", href: "/resources/faq" },
       { label: "Blogs", href: "/resources/blogs" },
-      { label: "Insights", href: "/resources/insights" },
+      { label: "Case Studies", href: "/resources/insights" },
+    ],
+  },
+] as const;
+
+export const footerNavigation = [
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "B2B Appointment setting", href: "/services/appointment-setting" },
+      { label: "B2B Lead generation", href: "/services/b2b-lead-generation" },
+      { label: "Account-based marketing", href: "/services/account-based-marketing" },
+    ],
+  },
+  {
+    label: "Industries We Help Grow",
+    href: "/who-we-serve",
+    children: [
+      { label: "IT Services and Consulting", href: "/who-we-serve" },
+      { label: "Software Product Engineering", href: "/who-we-serve" },
+      { label: "SaaS Product", href: "/who-we-serve" },
+      { label: "Cybersecurity", href: "/who-we-serve" },
+    ],
+  },
+  {
+    label: "Company",
+    href: "/about/our-story",
+    children: [
+      { label: "Our story", href: "/about/our-story" },
+      { label: "Leadership Team", href: "/about/founder-team" },
+      { label: "Our approach", href: "/about/how-we-work" },
+      { label: "Careers", href: "/about/careers" },
+    ],
+  },
+  {
+    label: "Insights",
+    href: "/resources/insights",
+    children: [
+      { label: "FAQs", href: "/resources/faq" },
+      { label: "Blogs", href: "/resources/blogs" },
+      { label: "Case Studies", href: "/resources/insights" },
     ],
   },
 ] as const;
@@ -109,20 +150,20 @@ export const processSteps = [
 
 export const audiences = [
   {
-    title: "B2B SaaS",
-    copy: "Growth-stage software teams moving upmarket, launching in new regions, or building a more reliable demo pipeline.",
+    title: "IT Services and Consulting",
+    copy: "Helping IT providers reach the right businesses, engage key stakeholders, and generate qualified sales opportunities.",
   },
   {
-    title: "IT & technology services",
-    copy: "Cloud, managed services, product engineering, and digital transformation firms with complex B2B sales motions.",
+    title: "Software Product Engineering",
+    copy: "Supporting software engineering companies in connecting with organizations looking for development and technology solutions.",
+  },
+  {
+    title: "SaaS Product",
+    copy: "Helping SaaS companies identify ideal customers, reach decision-makers, and accelerate customer acquisition.",
   },
   {
     title: "Cybersecurity",
-    copy: "Security vendors and consultancies that need relevant access to CISOs, technical leaders, and buying groups.",
-  },
-  {
-    title: "Professional services",
-    copy: "Consulting, recruitment, finance, and specialist advisory businesses selling high-value expertise.",
+    copy: "Enabling cybersecurity companies to connect with organizations facing security challenges and reach the stakeholders responsible for technology decisions.",
   },
 ] as const;
 
@@ -167,24 +208,39 @@ export const resources = [
 
 export const faqs = [
   {
-    question: "What makes an appointment qualified?",
+    question: "What does Growth Orbits do?",
     answer:
-      "Qualification criteria are agreed before launch. Typical criteria include ICP fit, the prospect's role, a relevant business need, timing, and a clear reason for the conversation.",
+      "Growth Orbits helps B2B companies generate qualified sales opportunities through targeted appointment setting, lead generation, and account-based marketing campaigns. We identify the right prospects, reach decision-makers, and help create meaningful sales conversations.",
   },
   {
-    question: "How quickly can a pilot launch?",
+    question: "How is an outsourced appointment setting different from hiring an in-house SDR team?",
     answer:
-      "A focused pilot can usually move from discovery to launch after targeting, data, messaging, and handoff rules are approved. The exact timeline depends on market complexity and available source material.",
+      "An outsourced appointment setting partner gives you access to experienced sales development resources without the time and cost of hiring, training, and managing an internal team. It allows you to scale outreach faster while focusing your internal team on closing deals.",
   },
   {
-    question: "Which channels do you use?",
+    question: "What industries do you specialize in?",
     answer:
-      "Campaigns can combine personalized email, LinkedIn, and calling. The channel mix is selected around the audience, market, compliance requirements, and your existing sales motion.",
+      "We work with technology-focused B2B companies, including IT services and consulting, SaaS companies, software product engineering firms, and cybersecurity businesses looking to build predictable sales pipelines.",
   },
   {
-    question: "Can Growth Orbits work with our CRM?",
+    question: "How do you find the right prospects for our business?",
     answer:
-      "Yes. The delivery model is designed to integrate with common CRM and scheduling workflows. The final setup will be confirmed during onboarding.",
+      "We start by understanding your ideal customer profile (ICP), target market, buyer personas, and sales goals. We then research relevant accounts, identify decision-makers, and build targeted outreach campaigns.",
+  },
+  {
+    question: "What channels do you use for outreach?",
+    answer:
+      "We use a combination of cold calling, personalized email outreach, LinkedIn engagement, account research, and other targeted approaches based on your audience and campaign goals.",
+  },
+  {
+    question: "Can you work with our existing sales team?",
+    answer:
+      "Yes. We work alongside your sales team by providing qualified meetings, prospect insights, and campaign learnings that help your team focus on closing opportunities.",
+  },
+  {
+    question: "How do we get started?",
+    answer:
+      "We begin with a discovery conversation to understand your goals, target market, and sales challenges. From there, we create a tailored outreach strategy designed around your business objectives.",
   },
 ] as const;
 

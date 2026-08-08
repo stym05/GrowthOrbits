@@ -110,7 +110,7 @@ export function OurStoryPage() {
             <h2>Let’s build a better growth orbit together.</h2>
             <p>Start with the market, the problem, and the conversations worth creating.</p>
           </div>
-          <ButtonLink href="/book-a-call" variant="light">Book a strategy call</ButtonLink>
+          <ButtonLink href="/book-a-call" variant="light">Book a Strategy Call</ButtonLink>
         </div>
       </section>
     </main>

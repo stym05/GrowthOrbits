@@ -140,7 +140,7 @@ export function FounderTeamPage() {
             <h2>Bring the team a focused growth question.</h2>
             <p>We’ll help turn it into a practical market and campaign plan.</p>
           </div>
-          <ButtonLink href="/book-a-call" variant="light">Book a strategy call</ButtonLink>
+          <ButtonLink href="/book-a-call" variant="light">Book a Strategy Call</ButtonLink>
         </div>
       </section>
     </main>

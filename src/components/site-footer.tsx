@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Brand } from "@/components/brand";
 import { Icon } from "@/components/icons";
-import { navigation, siteConfig } from "@/content/site";
+import { footerNavigation, siteConfig } from "@/content/site";
 
 export function SiteFooter() {
   return (
@@ -28,20 +28,18 @@ export function SiteFooter() {
           </a>
         </div>
 
-        {navigation.map((group) => (
+        {footerNavigation.map((group) => (
           <div className="footer-column" key={group.href}>
             <Link className="footer-heading" href={group.href}>
               {group.label}
             </Link>
-            {"children" in group ? (
-              <div className="footer-links">
-                {group.children.slice(0, 4).map((item) => (
-                  <Link key={item.href} href={item.href}>
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            ) : null}
+            <div className="footer-links">
+              {group.children.map((item) => (
+                <Link key={`${item.href}-${item.label}`} href={item.href}>
+                  {item.label}
+                </Link>
+              ))}
+            </div>
           </div>
         ))}
       </div>

@@ -79,7 +79,7 @@ export function SiteHeader() {
 
         <div className="header-actions">
           <ButtonLink className="header-cta" href="/book-a-call" arrow={false}>
-            Book a call
+            Book a Strategy Call
           </ButtonLink>
           <button
             ref={menuButtonRef}
@@ -118,7 +118,7 @@ export function SiteHeader() {
             </div>
           ))}
           <ButtonLink href="/book-a-call" onClick={() => setOpen(false)}>
-            Book a strategy call
+            Book a Strategy Call
           </ButtonLink>
         </nav>
       </div>

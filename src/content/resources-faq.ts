@@ -131,6 +131,6 @@ export const resourceFaqContent = {
     title: "Bring us the context. We’ll give you a straight answer.",
     copy: "Share your market, offer, sales motion, and the constraint you are trying to solve. If Growth Orbits is not the right fit, we will make that clear too.",
     primaryAction: { label: "Ask a question", href: "/contact" },
-    secondaryAction: { label: "Book a strategy call", href: "/book-a-call" },
+    secondaryAction: { label: "Book a Strategy Call", href: "/book-a-call" },
   },
 } as const;

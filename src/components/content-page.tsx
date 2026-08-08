@@ -14,7 +14,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
           <p>{page.description}</p>
           {page.path !== "thank-you" ? (
             <div className="hero-actions">
-              <ButtonLink href="/book-a-call">Book a strategy call</ButtonLink>
+              <ButtonLink href="/book-a-call">Book a Strategy Call</ButtonLink>
               <ButtonLink href="/services" variant="secondary">Explore services</ButtonLink>
             </div>
           ) : (
@@ -86,7 +86,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
               <p className="eyebrow">Build the next orbit</p>
               <h2>Turn a clear market into better sales conversations.</h2>
             </div>
-            <ButtonLink href="/book-a-call" variant="light">Book a strategy call</ButtonLink>
+            <ButtonLink href="/book-a-call" variant="light">Book a Strategy Call</ButtonLink>
           </div>
         </section>
       ) : null}
