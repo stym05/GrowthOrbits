@@ -6,7 +6,6 @@ import { HeroOrbitAnimation } from "@/components/hero-orbit-animation";
 import { Icon } from "@/components/icons";
 import { SectionHeading } from "@/components/section-heading";
 import {
-  campaignQualityLoop,
   homeHero,
   homeProcess,
   homeResources,
@@ -16,7 +15,6 @@ import {
 import {
   audiences,
   faqs,
-  operatingPrinciples,
   siteConfig,
 } from "@/content/site";
 
@@ -54,24 +52,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="principles-strip" aria-label="Operating principles">
-        <div className="container principles-shell">
-          <div className="principles-intro">
-            <span>Our operating code</span>
-            <strong>Quality at every handoff.</strong>
-          </div>
-          <div className="principles-grid">
-            {operatingPrinciples.map((item, index) => (
-              <div key={item.value}>
-                <small>{String(index + 1).padStart(2, "0")}</small>
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section services-section">
         <div className="container">
           <div className="services-showcase-heading">
@@ -93,32 +73,6 @@ export default function HomePage() {
                 </div>
               </Link>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section proof-section">
-        <div className="container proof-grid">
-          <div className="proof-copy">
-            <span className="home-section-index">02</span>
-            <p className="eyebrow">{campaignQualityLoop.eyebrow}</p>
-            <h2>{campaignQualityLoop.title}</h2>
-            <p>{campaignQualityLoop.description}</p>
-            <ButtonLink href="/about/how-we-work" variant="secondary">How and why we work</ButtonLink>
-          </div>
-          <div className="proof-panel">
-            <div className="proof-panel-heading">
-              <div className="proof-label">{campaignQualityLoop.label}</div>
-              <span>{campaignQualityLoop.rhythm}</span>
-            </div>
-            <ol>
-              {campaignQualityLoop.steps.map((step) => (
-                <li key={step.number}>
-                  <span>{step.number}</span>
-                  <div><strong>{step.title}</strong><p>{step.question}</p></div>
-                </li>
-              ))}
-            </ol>
           </div>
         </div>
       </section>
@@ -182,7 +136,7 @@ export default function HomePage() {
                   <p>“{item.quote}”</p>
                 </blockquote>
                 <div className="testimonial-portrait">
-                  <Image src={item.image} alt={`AI-generated portrait representing ${item.name}`} fill sizes="120px" />
+                  <Image src={item.image} alt={`AI-generated portrait representing ${item.name}`} fill sizes="88px" />
                 </div>
                 <figcaption><strong>{item.name}</strong><span>{item.role}</span></figcaption>
               </figure>

@@ -1,9 +1,112 @@
+export const b2bLeadGenerationPage = {
+  eyebrow: "B2B lead generation",
+  title: "A steady flow of sales-ready leads, not just a bigger list.",
+  description:
+    "Growth Orbits runs outbound lead generation end to end from targeted account research, multichannel outreach, and human qualification — so your pipeline fills with real conversations, not names to chase.",
+  deliverables: {
+    title: "What our B2B lead generation service delivers",
+    description:
+      "We research the right accounts, reach the real decision-makers, and qualify interest — then hand your team sales-ready leads with full context.",
+    items: [
+      "A clean, targeted list of your best-fit accounts and buyers.",
+      "Multichannel outreach that starts real conversations.",
+      "Qualified, sales-ready leads — not raw contacts.",
+      "Transparent weekly reporting on pipeline and results.",
+    ],
+  },
+  problem: {
+    eyebrow: "The problem",
+    title: "More leads isn't the goal. The right ones are.",
+    description:
+      "Most lead generation floods your reps with contacts that never convert — bought lists, low-intent form-fills, and outreach that reads like spam. Your team burns hours chasing ghosts. We do the opposite: fewer, better leads that actually fit your ICP and are ready to talk.",
+  },
+  included: {
+    eyebrow: "What's included",
+    title: "How our outbound lead generation works",
+    items: [
+      { number: "01", title: "ICP & offer alignment", description: "We pin down exactly who to target and why they'll care." },
+      { number: "02", title: "Account & contact research", description: "We build and verify a clean, targeted list of the right buyers." },
+      { number: "03", title: "Multichannel outreach", description: "Email, LinkedIn and phone in one coordinated sequence — not siloed blasts." },
+      { number: "04", title: "Qualification", description: "We separate genuine interest from noise, so only real leads pass through." },
+      { number: "05", title: "Sales-ready handoff", description: "Qualified leads go straight to your team or CRM, with full context." },
+    ],
+  },
+} as const;
+
+export const appointmentSettingProblem = {
+  eyebrow: "The problem",
+  title: "Most appointment settings sell you volume, not meetings that convert.",
+  description:
+    "Booking a lot of calls is easy. Booking the right ones is the hard part. When appointment setters chase calendar targets, your reps end up in meetings with poor-fit prospects and no context, burning time and goodwill.",
+  answer: "We do the opposite: fewer, better meetings your team is genuinely glad to take.",
+  image: "/careers/team-collaboration.jpg",
+  imageAlt: "A team discussing sales opportunities around a table",
+} as const;
+
+export const appointmentSettingPilot = {
+  title: "Start with a low-risk pilot.",
+  descriptionStart: "Run a focused ",
+  descriptionEmphasis: "4–6 week pilot",
+  descriptionEnd:
+    " to validate meeting quality and results before committing long-term. Once proven, scale into a monthly programme with an agreed meeting target.",
+  action: { label: "Book a Demo", href: "/book-a-call" },
+} as const;
+
+export const appointmentSettingAudience = {
+  eyebrow: "Who it's for",
+  title: "Built for B2B teams with complex, considered sales.",
+  description:
+    "We partner with private-sector B2B companies across industries — wherever the deal is high-value, involves more than one decision-maker, and deserves a real conversation.",
+  industries: [
+    { code: "SaaS", name: "B2B SaaS" },
+    { code: "IT", name: "Technology & IT Services" },
+    { code: "SEC", name: "Cybersecurity" },
+    { code: "FIN", name: "Fintech & Financial Services" },
+    { code: "MFG", name: "Manufacturing & Industrial" },
+    { code: "HLS", name: "Healthcare & Life Sciences" },
+    { code: "PRO", name: "Professional Services & Consulting" },
+    { code: "LOG", name: "Logistics & Supply Chain" },
+    { code: "MKT", name: "Marketing, Media & AdTech" },
+    { code: "TEL", name: "Telecom" },
+    { code: "HR", name: "HR, Staffing & RecTech" },
+    { code: "RET", name: "eCommerce & Retail Tech" },
+  ],
+} as const;
+
+export const appointmentSettingFaq = [
+  {
+    question: "What is B2B appointment setting?",
+    answer:
+      "B2B appointment setting is the process of identifying, contacting and qualifying potential business buyers, then scheduling sales meetings between them and your team — so your reps focus on selling, not prospecting.",
+  },
+  {
+    question: "How is appointment setting different from lead generation?",
+    answer:
+      "Lead generation fills the top of your funnel with interested contacts; appointment setting goes further and books a confirmed meeting on your calendar with a qualified decision-maker.",
+  },
+  {
+    question: "How quickly will we see booked meetings?",
+    answer:
+      "Most clients see their first qualified meetings within the first few weeks of the pilot, once ICP and messaging are aligned.",
+  },
+  {
+    question: "How much do appointment setting services cost?",
+    answer:
+      "Pricing depends on your target market and meeting volume. Most clients start with a fixed-fee pilot, then move to a monthly retainer tied to an agreed number of qualified meetings.",
+  },
+  {
+    question: "Which regions do you cover?",
+    answer:
+      "We run outbound across North America, the UK, Europe and APAC, adapting messaging and timing to each market.",
+  },
+] as const;
+
 export const serviceDetails = {
   "appointment-setting": {
     number: "01",
-    eyebrow: "Flagship service",
-    title: "Qualified meetings with buyers your team actually wants to meet.",
-    description: "A research-led appointment setting programme designed around your ICP, qualification rules, and sales capacity—not calendar volume alone.",
+    eyebrow: "B2B appointment setting",
+    title: "B2B appointment setting that books meetings your team actually wants.",
+    description: "Growth Orbits is a B2B appointment setting company. Our research-led programme is built around your ICP, qualification rules, and sales capacity, so you get qualified meetings, not just calendar volume.",
     visual: { centre: "Sales-ready conversation", nodes: ["Right account", "Relevant problem", "Agreed next step"] },
     signals: ["ICP-led targeting", "Human response handling", "Context-rich handoff"],
     snapshot: [
@@ -19,14 +122,14 @@ export const serviceDetails = {
       answer: "Growth Orbits owns the work before the meeting while keeping qualification and handoff aligned to the way your team sells.",
     },
     scope: {
-      eyebrow: "What is included",
-      title: "A complete appointment-setting workflow.",
-      description: "Each layer is connected, so research improves messaging and market feedback improves the next round of targeting.",
+      eyebrow: "What it delivers",
+      title: "What our B2B appointment setting service delivers",
+      description: "We combine targeted research, multichannel outreach, and human qualification to book sales-ready meetings with decision-makers who match your ICP, then hand each one over with full context.",
       items: [
-        { number: "01", title: "Campaign definition", copy: "Align the ICP, personas, regions, offer, meeting criteria, exclusions, and goals." },
-        { number: "02", title: "Account intelligence", copy: "Build and verify the account universe, buying roles, signals, and useful context." },
-        { number: "03", title: "Multichannel outreach", copy: "Run a coherent narrative across personalised email, LinkedIn, and calling." },
-        { number: "04", title: "Qualification & booking", copy: "Handle responses, confirm relevance, arrange the meeting, and prepare the handoff." },
+        { number: "01", title: "What you get", copy: "Qualified meetings booked straight onto your calendar." },
+        { number: "02", title: "What every engagement delivers", copy: "Real decision-makers — not junior gatekeepers." },
+        { number: "03", title: "What to expect from us", copy: "Full context before every call." },
+        { number: "04", title: "Meetings, done properly", copy: "Transparent weekly reporting on activity and results." },
       ],
     },
     process: [
@@ -44,13 +147,13 @@ export const serviceDetails = {
       cardTitle: "From booked slot to prepared conversation",
       cardCopy: "Replace this sample with your CRM fields, qualification criteria, and routing workflow during onboarding.",
     },
-    cta: { title: "Build a steadier flow of conversations worth having.", copy: "Start with one market, one offer, and a qualification standard your sales team trusts." },
+    cta: { title: "Ready for meetings your team actually wants to take?", copy: "Book a strategy call, we'll map your ICP and show you how we'd fill your calendar with qualified meetings." },
   },
   "b2b-lead-generation": {
     number: "02",
-    eyebrow: "Pipeline foundation",
-    title: "Build a reliable path from target account to sales opportunity.",
-    description: "Research, data, prospecting, message testing, and qualification connected into one learning system for complex B2B buying journeys.",
+    eyebrow: b2bLeadGenerationPage.eyebrow,
+    title: b2bLeadGenerationPage.title,
+    description: b2bLeadGenerationPage.description,
     visual: { centre: "Repeatable pipeline", nodes: ["Defined market", "Verified demand", "Qualified opportunity"] },
     signals: ["Market prioritisation", "Verified prospect data", "Campaign learning"],
     snapshot: [

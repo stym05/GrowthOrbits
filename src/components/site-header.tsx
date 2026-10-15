@@ -63,16 +63,29 @@ export function SiteHeader() {
                 if (!event.currentTarget.contains(event.relatedTarget)) setDesktopMenu(null);
               }}
             >
-              <Link href={item.href} onClick={() => setDesktopMenu(null)}>{item.label}</Link>
               {"children" in item ? (
-                <div className="nav-menu">
-                  {item.children.map((child) => (
-                    <Link key={child.href} href={child.href} onClick={() => setDesktopMenu(null)}>
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
+                <>
+                  <button
+                    className="nav-label"
+                    type="button"
+                    aria-expanded={desktopMenu === item.href}
+                    onClick={() => setDesktopMenu(item.href)}
+                  >
+                    {item.label}
+                  </button>
+                  <div className="nav-menu">
+                    {item.children.map((child) => (
+                      <Link key={child.href} href={child.href} onClick={() => setDesktopMenu(null)}>
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <Link className="nav-label" href={item.href}>
+                  {item.label}
+                </Link>
+              )}
             </div>
           ))}
         </nav>
@@ -103,18 +116,22 @@ export function SiteHeader() {
         <nav className="container mobile-nav" aria-label="Mobile navigation">
           {navigation.map((item) => (
             <div className="mobile-group" key={item.href}>
-              <Link href={item.href} onClick={() => setOpen(false)}>
-                {item.label}
-              </Link>
               {"children" in item ? (
-                <div className="mobile-subnav">
-                  {item.children.map((child) => (
-                    <Link key={child.href} href={child.href} onClick={() => setOpen(false)}>
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
+                <>
+                  <span className="mobile-nav-label">{item.label}</span>
+                  <div className="mobile-subnav">
+                    {item.children.map((child) => (
+                      <Link key={child.href} href={child.href} onClick={() => setOpen(false)}>
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <Link className="mobile-nav-label" href={item.href} onClick={() => setOpen(false)}>
+                  {item.label}
+                </Link>
+              )}
             </div>
           ))}
           <ButtonLink href="/book-a-call" onClick={() => setOpen(false)}>

@@ -20,7 +20,7 @@ export const navigation = [
     href: "/services",
     children: [
       /*{ label: "Solutions overview", href: "/services" },*/
-      { label: "Appointment Setting", href: "/services/appointment-setting" },
+      { label: "B2B Appointment Setting", href: "/services/appointment-setting" },
       { label: "B2B Lead Generation", href: "/services/b2b-lead-generation" },
       { label: "Account-Based Marketing(ABM)", href: "/services/account-based-marketing" },
     ],
@@ -208,39 +208,29 @@ export const resources = [
 
 export const faqs = [
   {
-    question: "What does Growth Orbits do?",
+    question: "What is B2B appointment setting?",
     answer:
-      "Growth Orbits helps B2B companies generate qualified sales opportunities through targeted appointment setting, lead generation, and account-based marketing campaigns. We identify the right prospects, reach decision-makers, and help create meaningful sales conversations.",
+      "B2B appointment setting is the process of identifying, contacting and qualifying potential business buyers, then scheduling sales meetings between them and your team — so your reps focus on selling, not prospecting.",
   },
   {
-    question: "How is an outsourced appointment setting different from hiring an in-house SDR team?",
+    question: "How is appointment setting different from lead generation?",
     answer:
-      "An outsourced appointment setting partner gives you access to experienced sales development resources without the time and cost of hiring, training, and managing an internal team. It allows you to scale outreach faster while focusing your internal team on closing deals.",
+      "Lead generation fills the top of your funnel with interested contacts; appointment setting goes further and books a confirmed meeting on your calendar with a qualified decision-maker.",
   },
   {
-    question: "What industries do you specialize in?",
+    question: "How quickly will we see booked meetings?",
     answer:
-      "We work with technology-focused B2B companies, including IT services and consulting, SaaS companies, software product engineering firms, and cybersecurity businesses looking to build predictable sales pipelines.",
+      "Most clients see their first qualified meetings within the first few weeks of the pilot, once ICP and messaging are aligned.",
   },
   {
-    question: "How do you find the right prospects for our business?",
+    question: "How much do appointment setting services cost?",
     answer:
-      "We start by understanding your ideal customer profile (ICP), target market, buyer personas, and sales goals. We then research relevant accounts, identify decision-makers, and build targeted outreach campaigns.",
+      "Pricing depends on your target market and meeting volume. Most clients start with a fixed-fee pilot, then move to a monthly retainer tied to an agreed number of qualified meetings.",
   },
   {
-    question: "What channels do you use for outreach?",
+    question: "Which regions do you cover?",
     answer:
-      "We use a combination of cold calling, personalized email outreach, LinkedIn engagement, account research, and other targeted approaches based on your audience and campaign goals.",
-  },
-  {
-    question: "Can you work with our existing sales team?",
-    answer:
-      "Yes. We work alongside your sales team by providing qualified meetings, prospect insights, and campaign learnings that help your team focus on closing opportunities.",
-  },
-  {
-    question: "How do we get started?",
-    answer:
-      "We begin with a discovery conversation to understand your goals, target market, and sales challenges. From there, we create a tailored outreach strategy designed around your business objectives.",
+      "We run outbound across North America, the UK, Europe and APAC, adapting messaging and timing to each market.",
   },
 ] as const;
 
